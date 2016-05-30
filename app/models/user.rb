@@ -3,7 +3,11 @@ class User < ApplicationRecord
   scope :opponents_waiting, -> { where(opponent_id: nil) }
 
   def opponent
-    User.find_by id: opponent_id
+    User.find_by id: self.reload.opponent_id
+  end
+
+  def channel_name
+    "game_channel_#{self.id}"
   end
 
   def assign_opponent
