@@ -1,0 +1,131 @@
+body {
+  background: url("bg.jpg");
+}
+
+.header {
+  margin: 60px 0;
+
+  .logo {
+    max-width: 100%;
+  }
+}
+
+h1, label {
+  color: white !important;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #dddddd;
+}
+
+.left-side, .right-side {
+
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+
+  h3 {
+    margin: 0px 0px 20px;
+    text-align: center;
+  }
+
+  .battleship-row {
+    width: 100%;
+    display: table;
+
+    .battleship-cell {
+      width: 33%;
+      height: 100px;
+      border: 1px solid #dddddd;
+      border-right: 0px;
+      display: table-cell;
+      margin: 0px;
+
+      &.ship {
+        background: url("ship.png") no-repeat center center;
+        background-size: 50% auto;
+      }
+
+      &.miss {
+        background: url("miss.png") no-repeat center center rgba(0, 0, 0, 0.2);
+        background-size: 50% auto;
+      }
+
+      &.hit {
+        background: url("hit.png") no-repeat center center;
+        background-size: 50% auto;
+      }
+
+      &:last-child {
+        border-right: 1px solid #dddddd !important;
+      }
+
+      &:hover:not(.disabled) {
+        background: url("target.png") no-repeat center center rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        background-size: 50% auto;
+      }
+    }
+
+    &:not(:last-child) {
+      .battleship-cell {
+        border-bottom: 0px;
+      }
+    }
+  }
+}
+
+#opponent-battleship {
+  position: relative;
+  #my-turn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    z-index: 99;
+    color: white;
+
+    span {
+      position: absolute;
+      width: 200px;
+      left: 50%;
+      margin-left: -100px;
+      top: 50%;
+      margin-top: -10px;
+      text-align: center;
+    }
+  }
+}
+
+#game-over {
+  padding: 20%;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  .winner {
+    display: none;
+  }
+  &.won {
+    background: rgba(0, 0, 0, 0.8);
+    .loser {
+      display: none;
+    }
+    .winner {
+      display: block;
+    }
+  }
+}
+
+#opponent-battleship, #my-battleship {
+  background: url("water.jpg");
+  background-size: 20% 20%;
+}
