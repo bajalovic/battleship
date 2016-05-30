@@ -1,0 +1,10 @@
+<% (0..2).each do |row| %>
+    <div class="battleship-row">
+      <% (0..2).each do |cell| %>
+          <div class="battleship-cell <%= 'disabled' if disabled %>"
+               data-x="<%= row %>"
+               data-y="<%= cell %>"
+          ></div>
+      <% end %>
+    </div>
+<% end %>
